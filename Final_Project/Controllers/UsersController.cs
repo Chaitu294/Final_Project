@@ -57,16 +57,6 @@ namespace Final_Project.Controllers
                 return View(model);
             }
 
-            //if(await _userManager.FindByEmailAsync(model.Email) != null)
-            //{
-            //    ModelState.AddModelError("Email", "Email already exists");
-            //    return View(model);
-            //}
-            //if (await _userManager.FindByNameAsync(model.UserName) != null)
-            //{
-            //    ModelState.AddModelError("UserName", "Username already exists");
-            //    return View(model);
-            //}
 
             var user = new ApplicationUser
             {
