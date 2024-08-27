@@ -15,6 +15,6 @@
 
         public string Attendees { get; set; }
 
-        public int? CustomerId { get; set; }
+        
     }
 }
