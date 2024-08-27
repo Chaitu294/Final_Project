@@ -91,7 +91,7 @@ namespace Final_Project.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Users = new SelectList(_userManager.Users, "Id", "UserName");
+            ViewBag.Users = new SelectList(_userManager.Users, "Id", "UserName", obj.AssignedTo);
             return View(obj);
         }
 
@@ -103,7 +103,7 @@ namespace Final_Project.Controllers
             {
                 return NotFound();
             }
-            ViewBag.Users = new SelectList(_userManager.Users, "Id", "UserName");
+            ViewBag.Users = new SelectList(_userManager.Users, "Id", "UserName", task.AssignedTo);
             return View(task);
         }
 
@@ -116,7 +116,7 @@ namespace Final_Project.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Users = new SelectList(_userManager.Users, "Id", "UserName");
+            ViewBag.Users = new SelectList(_userManager.Users, "Id", "UserName",task.AssignedTo);
             return View(task);
         }
         [HttpGet]
