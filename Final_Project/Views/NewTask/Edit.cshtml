@@ -1,0 +1,70 @@
+﻿@model Final_Project.Models.NewTask
+@{
+    ViewBag.Title = "Create New Task";
+}
+@{
+    var recurrencePatterns = new List<string> { "Daily", "Weekly", "Monthly", "Yearly" };
+}
+
+
+
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2>Edit Task</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+                        <div class="form-group mb-3">
+                            <label asp-for="TaskTitle" class="form-label">Task Title</label>
+                            <input asp-for="TaskTitle" class="form-control" placeholder="Enter task title" />
+                            <span asp-validation-for="TaskTitle" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ClientName"></label>
+                            <input asp-for="ClientName" class="form-control" />
+                            <span asp-validation-for="ClientName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="Description" class="form-label">Description</label>
+                            <textarea asp-for="Description" rows="5" class="form-control" placeholder="Enter task description"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="DueDateTime" class="form-label">Due Date & Time</label>
+                            <input asp-for="DueDateTime" class="form-control" type="datetime-local" />
+                            <span asp-validation-for="DueDateTime" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="Priority" class="form-label">Priority</label>
+                            <select asp-for="Priority" class="form-control">
+                                <option value="">Select Priority</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                            <span asp-validation-for="Priority" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="Status" class="form-label">Status</label>
+                            <select asp-for="Status" class="form-control">
+                                <option value="">Select Status</option>
+                                <option value="NotStarted">Not Started</option>
+                                <option value="InProgress">In Progress</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                            <a asp-controller="NewTask" asp-action="Index" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
