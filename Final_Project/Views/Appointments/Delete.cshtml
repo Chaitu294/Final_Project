@@ -49,9 +49,10 @@
         </dd>
     </dl>
 
-    <form asp-action="DeleteConfirmed">
-        <input type="hidden" asp-for="AppId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <form asp-action="DeleteConfirm" method="post">
+        <input type="hidden" name="id" value="@Model.AppId" />
+        <button type="submit" class="btn btn-danger">Delete</button> |
         <a asp-action="Index" class="btn btn-secondary">Back to List</a>
     </form>
+
 </div>
