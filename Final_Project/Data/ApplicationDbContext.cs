@@ -2,6 +2,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Collections.Generic;
+using System.Net;
+using System.Reflection;
 
 namespace Final_Project.Data
 {
@@ -12,12 +17,11 @@ namespace Final_Project.Data
         {
         }
 
-        public DbSet<User> User { get; set; }
+        public DbSet<Customer> Customer { get; set; }
         public DbSet<Appointment> Appointment { get; set; }
 
         public DbSet<NewTask> NewTasks { get; set; }
 
-        public DbSet<Appointment>  Appointments { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<NewTask>().HasKey(t => t.TaskId);
@@ -34,9 +38,9 @@ namespace Final_Project.Data
             //builder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
             //builder.Entity<IdentityUserToken<string>>().ToTable("UserTokens");
 
-            builder.Entity<User>().HasData(
-                new User { UserId = 1, UserName = "User1", PhotoPath = "~/Images/john.png", Created = DateTime.Now },
-                new User { UserId = 2, UserName = "User2", PhotoPath = "~/Images/mary.png", Created = DateTime.Now }
+            builder.Entity<Customer>().HasData(
+                new Customer { CustomerId = 1,Title = "Title1",FirstName = "Firstname1",MiddleName = "MiddleName1",Surname = "Surname1",PreferredName = "PreferredName1",Email = "Email1",PhoneNumber=123456,Address = "Address1" },
+                new Customer { CustomerId = 2, Title = "Title2", FirstName = "Firstname2", MiddleName = "MiddleName2", Surname = "Surname2", PreferredName = "PreferredName2", Email = "Email2", PhoneNumber = 234567, Address = "Address2" }
                 );
             builder.Entity<Appointment>().HasData(
                 new Appointment { AppId = 1, AppTitle = "Title1", StartDateTime = DateTime.Now, EndDateTime = DateTime.Now.AddDays(2), Description = "Description1", Location = "Location1", Attendees = "Attendee1" },

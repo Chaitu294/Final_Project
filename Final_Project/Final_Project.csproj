@@ -26,4 +26,11 @@
     <Folder Include="wwwroot\lib\qrcodejs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\HomeDashboard\CustomerView.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

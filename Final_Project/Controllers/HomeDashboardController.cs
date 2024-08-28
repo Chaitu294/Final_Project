@@ -12,29 +12,81 @@ namespace Final_Assessment.Controllers
             _db = db; 
         }
         public IActionResult CreateNewLead()
-        {
-            return View();
-        }
-        public IActionResult AppointmentManagement()
-        {
-            List<Appointment> appointmentlist = _db.Appointment.ToList();
-            return View(appointmentlist);
-        }
-        public IActionResult CreateNewAppointment()
-        {
+        {            
             return View();
         }
         [HttpPost]
-        public IActionResult CreateNewAppointment(Appointment obj)
+        public IActionResult CreateNewLead(Customer customer)
         {
-            _db.Appointment.Add(obj);
-            _db.SaveChanges();
-            return RedirectToAction("AppointmentManagement", "HomeDashboard");
+            if (ModelState.IsValid)
+            {
+                _db.Customer.Add(customer);
+                _db.SaveChanges();
+                return RedirectToAction();
+            }
+            return View(customer);
         }
-        public IActionResult UserManagement()
+        public IActionResult CustomerManagement()
         {
-            List<User> userlist = _db.User.ToList();
-            return View(userlist);
+            List<Customer> customerlist = _db.Customer.ToList();
+            return View(customerlist);
         }
+
+        public IActionResult CustomerView(int id)
+        {
+            var customer = _db.Customer.Find(id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+            return View(customer);
+        }
+        public IActionResult CustomerEdit(int id)
+        {
+            var customer = _db.Customer.Find(id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+            return View(customer);
+        }
+
+
+        [HttpPost]
+        public IActionResult CustomerEdit(Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Update(customer);
+                _db.SaveChanges();
+                return RedirectToAction();
+            }
+            return View(customer);
+        }
+
+
+        public IActionResult CustomerRemove(int id)
+        {
+            var customer = _db.Customer.Find(id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+            return View(customer);
+        }
+
+
+        [HttpPost]
+        public IActionResult DeleteConfirm(int id)
+        {
+            var customer = _db.Customer.Find(id);
+            if (customer != null)
+            {
+                _db.Customer.Remove(customer);
+                _db.SaveChanges();
+            }
+            return RedirectToAction("CustomerManagement");
+        }
+
     }
 }

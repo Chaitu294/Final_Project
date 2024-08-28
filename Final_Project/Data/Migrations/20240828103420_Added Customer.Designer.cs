@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_Project.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240828044415_AssignedTo")]
-    partial class AssignedTo
+    [Migration("20240828103420_Added Customer")]
+    partial class AddedCustomer
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -132,7 +132,99 @@ namespace Final_Project.Data.Migrations
 
                     b.HasKey("AppId");
 
-                    b.ToTable("Appointments");
+                    b.ToTable("Appointment");
+
+                    b.HasData(
+                        new
+                        {
+                            AppId = 1,
+                            AppTitle = "Title1",
+                            Attendees = "Attendee1",
+                            Description = "Description1",
+                            EndDateTime = new DateTime(2024, 8, 30, 16, 4, 19, 570, DateTimeKind.Local).AddTicks(7711),
+                            Location = "Location1",
+                            StartDateTime = new DateTime(2024, 8, 28, 16, 4, 19, 570, DateTimeKind.Local).AddTicks(7695)
+                        },
+                        new
+                        {
+                            AppId = 2,
+                            AppTitle = "Title2",
+                            Attendees = "Attendee2",
+                            Description = "Description2",
+                            EndDateTime = new DateTime(2024, 8, 31, 16, 4, 19, 570, DateTimeKind.Local).AddTicks(7720),
+                            Location = "Location2",
+                            StartDateTime = new DateTime(2024, 8, 28, 16, 4, 19, 570, DateTimeKind.Local).AddTicks(7719)
+                        });
+                });
+
+            modelBuilder.Entity("Final_Project.Models.Customer", b =>
+                {
+                    b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MiddleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PhoneNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PreferredName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CustomerId");
+
+                    b.ToTable("Customer");
+
+                    b.HasData(
+                        new
+                        {
+                            CustomerId = 1,
+                            Address = "Address1",
+                            Email = "Email1",
+                            FirstName = "Firstname1",
+                            MiddleName = "MiddleName1",
+                            PhoneNumber = 123456,
+                            PreferredName = "PreferredName1",
+                            Surname = "Surname1",
+                            Title = "Title1"
+                        },
+                        new
+                        {
+                            CustomerId = 2,
+                            Address = "Address2",
+                            Email = "Email2",
+                            FirstName = "Firstname2",
+                            MiddleName = "MiddleName2",
+                            PhoneNumber = 234567,
+                            PreferredName = "PreferredName2",
+                            Surname = "Surname2",
+                            Title = "Title2"
+                        });
                 });
 
             modelBuilder.Entity("Final_Project.Models.NewTask", b =>

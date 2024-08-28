@@ -138,9 +138,9 @@ namespace Final_Project.Data.Migrations
                             AppTitle = "Title1",
                             Attendees = "Attendee1",
                             Description = "Description1",
-                            EndDateTime = new DateTime(2024, 8, 29, 18, 47, 56, 613, DateTimeKind.Local).AddTicks(6453),
+                            EndDateTime = new DateTime(2024, 8, 30, 16, 4, 19, 570, DateTimeKind.Local).AddTicks(7711),
                             Location = "Location1",
-                            StartDateTime = new DateTime(2024, 8, 27, 18, 47, 56, 613, DateTimeKind.Local).AddTicks(6451)
+                            StartDateTime = new DateTime(2024, 8, 28, 16, 4, 19, 570, DateTimeKind.Local).AddTicks(7695)
                         },
                         new
                         {
@@ -148,9 +148,79 @@ namespace Final_Project.Data.Migrations
                             AppTitle = "Title2",
                             Attendees = "Attendee2",
                             Description = "Description2",
-                            EndDateTime = new DateTime(2024, 8, 30, 18, 47, 56, 613, DateTimeKind.Local).AddTicks(6463),
+                            EndDateTime = new DateTime(2024, 8, 31, 16, 4, 19, 570, DateTimeKind.Local).AddTicks(7720),
                             Location = "Location2",
-                            StartDateTime = new DateTime(2024, 8, 27, 18, 47, 56, 613, DateTimeKind.Local).AddTicks(6463)
+                            StartDateTime = new DateTime(2024, 8, 28, 16, 4, 19, 570, DateTimeKind.Local).AddTicks(7719)
+                        });
+                });
+
+            modelBuilder.Entity("Final_Project.Models.Customer", b =>
+                {
+                    b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MiddleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PhoneNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PreferredName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CustomerId");
+
+                    b.ToTable("Customer");
+
+                    b.HasData(
+                        new
+                        {
+                            CustomerId = 1,
+                            Address = "Address1",
+                            Email = "Email1",
+                            FirstName = "Firstname1",
+                            MiddleName = "MiddleName1",
+                            PhoneNumber = 123456,
+                            PreferredName = "PreferredName1",
+                            Surname = "Surname1",
+                            Title = "Title1"
+                        },
+                        new
+                        {
+                            CustomerId = 2,
+                            Address = "Address2",
+                            Email = "Email2",
+                            FirstName = "Firstname2",
+                            MiddleName = "MiddleName2",
+                            PhoneNumber = 234567,
+                            PreferredName = "PreferredName2",
+                            Surname = "Surname2",
+                            Title = "Title2"
                         });
                 });
 
@@ -190,46 +260,6 @@ namespace Final_Project.Data.Migrations
                     b.HasKey("TaskId");
 
                     b.ToTable("NewTasks");
-                });
-
-            modelBuilder.Entity("Final_Project.Models.User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PhotoPath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("User");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = 1,
-                            Created = new DateTime(2024, 8, 27, 18, 47, 56, 613, DateTimeKind.Local).AddTicks(6159),
-                            PhotoPath = "~/Images/john.png",
-                            UserName = "User1"
-                        },
-                        new
-                        {
-                            UserId = 2,
-                            Created = new DateTime(2024, 8, 27, 18, 47, 56, 613, DateTimeKind.Local).AddTicks(6162),
-                            PhotoPath = "~/Images/mary.png",
-                            UserName = "User2"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
