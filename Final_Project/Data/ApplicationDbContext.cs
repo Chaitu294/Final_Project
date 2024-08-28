@@ -11,8 +11,17 @@ namespace Final_Project.Data
             : base(options)
         {
         }
+
+        public DbSet<NewTask> NewTasks { get; set; }
+
+        public DbSet<Appointment>  Appointments { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<NewTask>().HasKey(t => t.TaskId);
+
+            builder.Entity<Appointment>().HasKey(a => a.AppId);
+
+
             base.OnModelCreating(builder);
             //builder.Entity<IdentityUser>().ToTable("Users");
             //builder.Entity<IdentityRole>().ToTable("Roles");

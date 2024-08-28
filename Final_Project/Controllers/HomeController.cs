@@ -15,11 +15,19 @@ namespace Final_Project.Controllers
 
         public IActionResult Index()
         {
+            
+
             return View();
         }
 
         public IActionResult Privacy()
         {
+            //var userEmail = HttpContext.Session.GetString("UserEmail");
+            //if (string.IsNullOrEmpty(userEmail))
+            //{
+            //    // Session expired, redirect to login
+            //    return RedirectToAction("Login", "Account");
+            //}
             return View();
         }
 
