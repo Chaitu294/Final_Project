@@ -1,0 +1,37 @@
+﻿@model List<Appointment>
+@{
+    ViewData["Title"] = "AppointmentManagement";
+}
+
+
+<div class="row pt-4">
+    <div class="col-6"><h3 class="heading">Appointment Management</h3></div>
+    <div class="text-end col-6"><a class="btn btn-outline-primary new-appointment-button" asp-controller="HomeDashboard" asp-action="CreateNewAppointment">Create New Appointment </a></div>
+</div>
+<hr />
+<table class="mytable" cellpadding="10" cellspacing="10">
+    <thead>
+        <tr>
+            <th>Appointment Title</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Attendees</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.AppTitle</td>
+                <td>@appointment.StartDateTime</td>
+                <td>@appointment.EndDateTime</td>
+                <td>@appointment.Description</td>
+                <td>@appointment.Location</td>
+                <td>@appointment.Attendees</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

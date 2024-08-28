@@ -4,6 +4,7 @@ using Final_Project.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_Project.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240827124506_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -129,29 +132,7 @@ namespace Final_Project.Data.Migrations
 
                     b.HasKey("AppId");
 
-                    b.ToTable("Appointment");
-
-                    b.HasData(
-                        new
-                        {
-                            AppId = 1,
-                            AppTitle = "Title1",
-                            Attendees = "Attendee1",
-                            Description = "Description1",
-                            EndDateTime = new DateTime(2024, 8, 29, 18, 47, 56, 613, DateTimeKind.Local).AddTicks(6453),
-                            Location = "Location1",
-                            StartDateTime = new DateTime(2024, 8, 27, 18, 47, 56, 613, DateTimeKind.Local).AddTicks(6451)
-                        },
-                        new
-                        {
-                            AppId = 2,
-                            AppTitle = "Title2",
-                            Attendees = "Attendee2",
-                            Description = "Description2",
-                            EndDateTime = new DateTime(2024, 8, 30, 18, 47, 56, 613, DateTimeKind.Local).AddTicks(6463),
-                            Location = "Location2",
-                            StartDateTime = new DateTime(2024, 8, 27, 18, 47, 56, 613, DateTimeKind.Local).AddTicks(6463)
-                        });
+                    b.ToTable("Appointments");
                 });
 
             modelBuilder.Entity("Final_Project.Models.NewTask", b =>
@@ -190,46 +171,6 @@ namespace Final_Project.Data.Migrations
                     b.HasKey("TaskId");
 
                     b.ToTable("NewTasks");
-                });
-
-            modelBuilder.Entity("Final_Project.Models.User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PhotoPath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("User");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = 1,
-                            Created = new DateTime(2024, 8, 27, 18, 47, 56, 613, DateTimeKind.Local).AddTicks(6159),
-                            PhotoPath = "~/Images/john.png",
-                            UserName = "User1"
-                        },
-                        new
-                        {
-                            UserId = 2,
-                            Created = new DateTime(2024, 8, 27, 18, 47, 56, 613, DateTimeKind.Local).AddTicks(6162),
-                            PhotoPath = "~/Images/mary.png",
-                            UserName = "User2"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

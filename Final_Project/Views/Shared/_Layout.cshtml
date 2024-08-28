@@ -25,6 +25,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="HomeDashboard" asp-action="CreateNewLead">Create New Lead</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="HomeDashboard" asp-action="AppointmentManagement">Appointment Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="HomeDashboard" asp-action="CreateNewAppointment">Create New Appointment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="HomeDashboard" asp-action="UserManagement">User Management</a>
+                        </li>
                         @if(User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
