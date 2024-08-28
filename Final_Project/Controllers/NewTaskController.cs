@@ -12,9 +12,9 @@ namespace Final_Project.Controllers
     public class NewTaskController : Controller
     {
         private readonly ApplicationDbContext _db;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public NewTaskController(ApplicationDbContext db, UserManager<IdentityUser> userManager)
+        public NewTaskController(ApplicationDbContext db, UserManager<ApplicationUser> userManager)
         {
             _db = db;
             _userManager = userManager;
