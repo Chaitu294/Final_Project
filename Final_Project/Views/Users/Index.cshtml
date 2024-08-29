@@ -41,8 +41,6 @@
 @section Scripts{
     <script>
          function deleteuser(Id){
-        //     confirm("Really to delete?" + id);
-        //     console.log(id);
             var result = confirm("Are you sure that you need to delete this user?");
             if (result) {
                 console.log(btn.data('id'));
@@ -53,46 +51,4 @@
 
     </script>
 }
-@* 
- @section Scripts{
-    <script>
-         $(document).ready(function () {
-             $('.js-delete').on('click', function () {
-                 var btn = $(this);
 
-                  bootbox.confirm({
-                       message: 'Are you sure that you need to delete this user?',
-                       buttons: {
-                           confirm: {
-                               label: 'Yes',
-                               className: 'btn-success'
-                           },
-                           cancel: {
-                            label: 'No',
-                               className: 'btn-danger'
-                           }
-                       },
-                        callback: function (result) {
-                           if (result) {
-                               $.ajax({
-                                   URL: 'api/users/?userId=' + btn.data('id'),
-                                   method: 'DELETE',
-                                   success: function () {
-                                       btn.parents('tr').fadeOut();
-                                       alert('User deleted');
-                                   },
-                                   error: function () {
-                                       alert('Something went wrong');
-                                   }
-                               });
-                           }
-                       }
-                   });
-                    //  var result = confirm("Are you sure that you need to delete this user?");
-                    // if (result) {
-                    //     console.log(btn.data('id'));
-                    // }
-            });
-        });
-    </script>
-}  *@
