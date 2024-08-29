@@ -13,5 +13,7 @@ namespace Final_Project.Models
         public string Email { get; set; }
         public int PhoneNumber { get; set; }
         public string Address { get; set; }
+
+        
     }
 }

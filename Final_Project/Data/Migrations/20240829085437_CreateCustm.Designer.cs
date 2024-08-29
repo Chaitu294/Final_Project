@@ -4,6 +4,7 @@ using Final_Project.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_Project.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240829085437_CreateCustm")]
+    partial class CreateCustm
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -113,9 +116,6 @@ namespace Final_Project.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -140,22 +140,20 @@ namespace Final_Project.Data.Migrations
                             AppId = 1,
                             AppTitle = "Title1",
                             Attendees = "Attendee1",
-                            CustomerId = 0,
                             Description = "Description1",
-                            EndDateTime = new DateTime(2024, 8, 31, 16, 28, 3, 707, DateTimeKind.Local).AddTicks(2238),
+                            EndDateTime = new DateTime(2024, 8, 31, 14, 24, 35, 848, DateTimeKind.Local).AddTicks(6505),
                             Location = "Location1",
-                            StartDateTime = new DateTime(2024, 8, 29, 16, 28, 3, 707, DateTimeKind.Local).AddTicks(2226)
+                            StartDateTime = new DateTime(2024, 8, 29, 14, 24, 35, 848, DateTimeKind.Local).AddTicks(6493)
                         },
                         new
                         {
                             AppId = 2,
                             AppTitle = "Title2",
                             Attendees = "Attendee2",
-                            CustomerId = 0,
                             Description = "Description2",
-                            EndDateTime = new DateTime(2024, 9, 1, 16, 28, 3, 707, DateTimeKind.Local).AddTicks(2249),
+                            EndDateTime = new DateTime(2024, 9, 1, 14, 24, 35, 848, DateTimeKind.Local).AddTicks(6513),
                             Location = "Location2",
-                            StartDateTime = new DateTime(2024, 8, 29, 16, 28, 3, 707, DateTimeKind.Local).AddTicks(2248)
+                            StartDateTime = new DateTime(2024, 8, 29, 14, 24, 35, 848, DateTimeKind.Local).AddTicks(6513)
                         });
                 });
 
@@ -244,9 +242,6 @@ namespace Final_Project.Data.Migrations
                     b.Property<string>("ClientName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
