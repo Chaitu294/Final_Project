@@ -65,6 +65,30 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/bootbox.js/bootbox.min.js"></script> 
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        let inactivityTime = function () {
+            let time;
+            window.onload = resetTimer;
+            window.onmousemove = resetTimer;
+            window.onmousedown = resetTimer;
+            window.ontouchstart = resetTimer;
+            window.ontouchmove = resetTimer;
+            window.onclick = resetTimer;
+            window.onkeypress = resetTimer;
+            window.addEventListener('scroll', resetTimer, true);
+
+            function showAlert() {
+                alert("You have been inactive for a while!");
+            }
+
+            function resetTimer() {
+                clearTimeout(time);
+                time = setTimeout(showAlert, 240000); // 4 minute
+            }
+        };
+
+        inactivityTime();
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
