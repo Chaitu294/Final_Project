@@ -20,6 +20,17 @@ namespace Final_Assessment.Controllers
             var appointments = _db.Appointment.ToList();
             return View(appointments);
         }
+        [HttpGet]
+        public async Task<IActionResult> Index(string Appsearch)
+        {
+            ViewData["GetAppointmentDetails"] = Appsearch;
+            var empquery = from x in _db.Appointment select x;
+            if (!String.IsNullOrEmpty(Appsearch))
+            {
+                empquery = empquery.Where(x=> x.AppTitle.Contains(Appsearch) || x.Description.Contains(Appsearch));
+            }
+            return View(await empquery.AsNoTracking().ToListAsync());
+        }
 
         [HttpGet]
         public IActionResult Create()

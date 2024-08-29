@@ -1,6 +1,7 @@
 ﻿using Final_Project.Data;
 using Final_Project.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Final_Assessment.Controllers
 {
@@ -30,6 +31,23 @@ namespace Final_Assessment.Controllers
         {
             List<Customer> customerlist = _db.Customer.ToList();
             return View(customerlist);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CustomerManagement(string Customersearch)
+        {
+            ViewData["GetCustomerDetails"] = Customersearch;
+            var customers = from x in _db.Customer 
+                           select x;
+            if (!String.IsNullOrEmpty(Customersearch))
+            {
+                customers = customers.Where(x => x.Title.Contains(Customersearch) 
+                                            || x.FirstName.Contains(Customersearch) 
+                                            || x.MiddleName.Contains(Customersearch) 
+                                            || x.Surname.Contains(Customersearch) 
+                                            || x.PreferredName.Contains(Customersearch));
+            }
+            return View(await customers.AsNoTracking().ToListAsync());
         }
 
         public IActionResult CustomerView(int id)
