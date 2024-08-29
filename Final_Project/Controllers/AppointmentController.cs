@@ -6,18 +6,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Final_Assessment.Controllers
 {
-    public class AppointmentsController : Controller
+    public class AppointmentController : Controller
     {
         private readonly ApplicationDbContext _db;
 
-        public AppointmentsController(ApplicationDbContext db)
+        public AppointmentController(ApplicationDbContext db)
         {
             _db = db;
         }
 
         public IActionResult Index()
         {
-            var appointments = _db.Appointments.ToList();
+            var appointments = _db.Appointment.ToList();
             return View(appointments);
         }
 
@@ -33,7 +33,7 @@ namespace Final_Assessment.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Appointments.Add(appointment);
+                _db.Appointment.Add(appointment);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -43,7 +43,7 @@ namespace Final_Assessment.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var appointment = _db.Appointments.Find(id);
+            var appointment = _db.Appointment.Find(id);
             if (appointment == null)
             {
                 return NotFound();
@@ -68,7 +68,7 @@ namespace Final_Assessment.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var appointment = _db.Appointments.Find(id);
+            var appointment = _db.Appointment.Find(id);
             if (appointment == null)
             {
                 return NotFound();
@@ -80,10 +80,10 @@ namespace Final_Assessment.Controllers
         [HttpPost]
         public IActionResult DeleteConfirm(int id)
         {
-            var appointment = _db.Appointments.Find(id);
+            var appointment = _db.Appointment.Find(id);
             if (appointment != null)
             {
-                _db.Appointments.Remove(appointment);
+                _db.Appointment.Remove(appointment);
                 _db.SaveChanges();
             }
             return RedirectToAction("Index");

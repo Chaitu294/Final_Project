@@ -9,51 +9,66 @@
     <link rel="stylesheet" href="~/FinalProject.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Final_Project</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-3 text-white min-vh-100">
+                    <a asp-controller="Home" asp-action="Index" class="navbar-brand d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline">
+                            Final Project
+                        </span>
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a asp-controller="Home" asp-action="Index" class="nav-link align-middle px-0 text-white">
+                                <i class="fs-4 bi bi-house-fill"></i><span class="d-none d-sm-inline">Home</span>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        @if(User.IsInRole("Admin"))
+                        @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Roles" asp-action="Index">Manage Roles</a>
+                                <a class="nav-link px-0 text-white" asp-controller="Roles" asp-action="Index">Manage Roles</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Users" asp-action="Index">Manage Users</a>
+                                <a class="nav-link px-0 text-white" asp-controller="Users" asp-action="Index">Manage Users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-0 text-white" asp-controller="" asp-action="">Session Timeout</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-0 text-white" asp-controller="" asp-action="">Audit Logs</a>
                             </li>
                         }
                         @if (User.IsInRole("User"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="NewTask" asp-action="Index">Task Management</a>
+                                <a class="nav-link px-0 text-white" asp-controller="NewTask" asp-action="Index">Task & Diary Management</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Appointments" asp-action="Index">Appointment Management</a>
+                                <a class="nav-link px-0 text-white" asp-controller="Appointment" asp-action="Index">Appointment Management</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="HomeDashboard" asp-action="CreateNewLead">Create New Lead</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="Appointment" asp-action="Create">Create New Appointment</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="" asp-action="">Recently Viewed Customers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-0 text-white" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">My Profile</a>
                             </li>
                         }
-                        
                     </ul>
                     <partial name="_LoginPartial" />
+                    <hr>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+                <main role="main" class="col py-3">
+                    @RenderBody()
+                </main>
+        </div>
     </div>
 
     @* <footer class="border-top footer text-muted">
