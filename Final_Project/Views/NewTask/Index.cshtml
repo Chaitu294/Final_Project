@@ -61,6 +61,7 @@
                 <th>Priority</th>
                 <th>Status</th>
                 <th>Assigned To</th>
+                <th>Customer</th>
             </tr>
         </thead>
         <tbody>
@@ -75,6 +76,11 @@
                     <td>@task.Priority</td>
                     <td>@task.Status</td>
                     <td>@task.AssignedTo</td>
+                    <td>@task.CustomerId</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@task.TaskId" class="btn btn-warning">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@task.TaskId" class="btn btn-danger">Delete</a>
+                    </td>
 
 
                 </tr>

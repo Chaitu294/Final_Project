@@ -25,6 +25,9 @@ namespace Final_Project.Models
 
         public string AssignedTo {  get; set; }
 
+        public int? CustomerId { get; set; }
+        
+
     }
 
     public enum Priority

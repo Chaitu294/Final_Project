@@ -78,7 +78,8 @@ namespace Final_Project.Controllers
 
         public IActionResult Create()
         {
-            ViewBag.Users = new SelectList(_userManager.Users, "Id", "UserName");
+            ViewBag.Users = new SelectList(_userManager.Users, "FirstName", "UserName");
+            ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "Title");
             return View();
         }
 
@@ -91,7 +92,8 @@ namespace Final_Project.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Users = new SelectList(_userManager.Users, "Id", "UserName", obj.AssignedTo);
+            ViewBag.Users = new SelectList(_userManager.Users, "FirstName", "UserName", obj.AssignedTo);
+            ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "Title", obj.CustomerId);
             return View(obj);
         }
 
@@ -103,7 +105,8 @@ namespace Final_Project.Controllers
             {
                 return NotFound();
             }
-            ViewBag.Users = new SelectList(_userManager.Users, "Id", "UserName", task.AssignedTo);
+            ViewBag.Users = new SelectList(_userManager.Users, "FirstName", "UserName", task.AssignedTo);
+            ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "Title", task.CustomerId);
             return View(task);
         }
 
@@ -116,7 +119,8 @@ namespace Final_Project.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Users = new SelectList(_userManager.Users, "Id", "UserName",task.AssignedTo);
+            ViewBag.Users = new SelectList(_userManager.Users, "FirstName", "UserName",task.AssignedTo);
+            ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "Title", task.CustomerId);
             return View(task);
         }
         [HttpGet]
@@ -131,7 +135,7 @@ namespace Final_Project.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteC(int id)
+        public IActionResult DeleteConfirm(int id)
         {
             var task = _db.NewTasks.Find(id);
             if (task != null)
