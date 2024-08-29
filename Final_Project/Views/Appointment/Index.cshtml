@@ -10,6 +10,14 @@
     <a asp-action="Create" class="btn btn-primary">Create New Appointment</a>
 </p>
 
+<form method="get" asp-action="Index">
+    <p>
+        <input type="search" placeholder="Search" value="@ViewData["GetAppDetails"]" name="Appsearch" />
+        <input type="submit" value="Search" class="btn btn-primary"/>
+        <a asp-action="Index"> Get All Appointments</a>
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
