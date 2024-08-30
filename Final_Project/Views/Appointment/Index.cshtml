@@ -10,6 +10,14 @@
     <a asp-action="Create" class="btn btn-primary">Create New Appointment</a>
 </p>
 
+<form method="get" asp-action="Index">
+    <p>
+        <input type="search" placeholder="Search" value="@ViewData["GetAppDetails"]" name="Appsearch" />
+        <input type="submit" value="Search" class="btn btn-primary"/>
+        <a asp-action="Index"> Get All Appointments</a>
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -19,7 +27,7 @@
             <th>End Date & Time</th>
             <th>Location</th>
             <th>Attendees</th>
-            <th></th>
+            <th>Customer</th>
         </tr>
     </thead>
     <tbody>
@@ -32,6 +40,7 @@
                 <td>@item.EndDateTime</td>
                 <td>@item.Location</td>
                 <td>@item.Attendees</td>
+                <td>@item.CustomerId</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.AppId" class="btn btn-warning">Edit</a> |
                     <a asp-action="Delete" asp-route-id="@item.AppId" class="btn btn-danger">Delete</a>

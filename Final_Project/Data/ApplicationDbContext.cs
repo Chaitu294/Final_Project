@@ -29,6 +29,9 @@ namespace Final_Project.Data
             builder.Entity<Appointment>().HasKey(a => a.AppId);
 
 
+            
+
+
             base.OnModelCreating(builder);
             //builder.Entity<IdentityUser>().ToTable("Users");
             //builder.Entity<IdentityRole>().ToTable("Roles");

@@ -2,6 +2,7 @@
 using Final_Project.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Final_Assessment.Controllers
@@ -18,12 +19,32 @@ namespace Final_Assessment.Controllers
         public IActionResult Index()
         {
             var appointments = _db.Appointment.ToList();
+            var customers = _db.Customer.ToList();
+
+            var appointmentWithCustomerData = appointments.Select(a => new
+            {
+                Appointment = a,
+                CustomerTitle = customers.FirstOrDefault(c => c.CustomerId == a.CustomerId)?.Title
+            }).ToList();
             return View(appointments);
+
+        }
+        [HttpGet]
+        public async Task<IActionResult> Index(string Appsearch)
+        {
+            ViewData["GetAppointmentDetails"] = Appsearch;
+            var empquery = from x in _db.Appointment select x;
+            if (!String.IsNullOrEmpty(Appsearch))
+            {
+                empquery = empquery.Where(x=> x.AppTitle.Contains(Appsearch) || x.Description.Contains(Appsearch));
+            }
+            return View(await empquery.AsNoTracking().ToListAsync());
         }
 
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "FirstName");
             return View();
         }
 
@@ -37,6 +58,7 @@ namespace Final_Assessment.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "FirstName", appointment.CustomerId);
             return View(appointment);
         }
 
@@ -48,6 +70,7 @@ namespace Final_Assessment.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "FirstName", appointment.CustomerId);
             return View(appointment);
         }
 
@@ -61,6 +84,7 @@ namespace Final_Assessment.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "FirstName", appointment.CustomerId);
             return View(appointment);
         }
 

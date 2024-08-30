@@ -5,6 +5,14 @@
 
 <h3 class="heading">Customer Management</h3>
 
+<form method="get" asp-action="CustomerManagement">
+    <p>
+        <input type="search" placeholder="Search" value="@ViewData["GetCustomerDetails"]" name="Customersearch" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+        <a asp-action="CustomerManagement"> Get All Customers</a>
+    </p>
+</form>
+
 <div class="row row-cols-1 row-cols-md-4 ">
     @foreach (var Customer in Model)
     {
@@ -15,7 +23,7 @@
                     <p> @Customer.PreferredName</p>
                 </div>
                 <div class="card-body text-center">
-                    <p>Image</p>
+                    <p> @Customer.FirstName @Customer.MiddleName @Customer.Surname </p>
                 </div>
                 <div class="card-footer text-center">
                     <a asp-action="CustomerView" asp-route-id="@Customer.CustomerId" class="btn btn-secondary">View</a>
