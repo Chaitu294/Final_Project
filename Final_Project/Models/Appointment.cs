@@ -17,6 +17,8 @@
 
         public int CustomerId {  get; set; }
 
+        public int TaskId {  get; set; }
+
        
         
     }

@@ -28,6 +28,7 @@
             <th>Location</th>
             <th>Attendees</th>
             <th>Customer</th>
+            <th>Associated Task</th>
         </tr>
     </thead>
     <tbody>
@@ -41,6 +42,7 @@
                 <td>@item.Location</td>
                 <td>@item.Attendees</td>
                 <td>@item.CustomerId</td>
+                <td>@item.TaskId</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.AppId" class="btn btn-warning">Edit</a> |
                     <a asp-action="Delete" asp-route-id="@item.AppId" class="btn btn-danger">Delete</a>

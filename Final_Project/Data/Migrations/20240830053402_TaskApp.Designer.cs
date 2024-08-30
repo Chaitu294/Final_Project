@@ -4,6 +4,7 @@ using Final_Project.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_Project.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240830053402_TaskApp")]
+    partial class TaskApp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,9 +148,9 @@ namespace Final_Project.Data.Migrations
                             Attendees = "Attendee1",
                             CustomerId = 0,
                             Description = "Description1",
-                            EndDateTime = new DateTime(2024, 9, 1, 11, 8, 50, 590, DateTimeKind.Local).AddTicks(4874),
+                            EndDateTime = new DateTime(2024, 9, 1, 11, 4, 0, 774, DateTimeKind.Local).AddTicks(3414),
                             Location = "Location1",
-                            StartDateTime = new DateTime(2024, 8, 30, 11, 8, 50, 590, DateTimeKind.Local).AddTicks(4863),
+                            StartDateTime = new DateTime(2024, 8, 30, 11, 4, 0, 774, DateTimeKind.Local).AddTicks(3405),
                             TaskId = 0
                         },
                         new
@@ -157,9 +160,9 @@ namespace Final_Project.Data.Migrations
                             Attendees = "Attendee2",
                             CustomerId = 0,
                             Description = "Description2",
-                            EndDateTime = new DateTime(2024, 9, 2, 11, 8, 50, 590, DateTimeKind.Local).AddTicks(4882),
+                            EndDateTime = new DateTime(2024, 9, 2, 11, 4, 0, 774, DateTimeKind.Local).AddTicks(3422),
                             Location = "Location2",
-                            StartDateTime = new DateTime(2024, 8, 30, 11, 8, 50, 590, DateTimeKind.Local).AddTicks(4882),
+                            StartDateTime = new DateTime(2024, 8, 30, 11, 4, 0, 774, DateTimeKind.Local).AddTicks(3421),
                             TaskId = 0
                         });
                 });

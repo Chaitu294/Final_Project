@@ -19,7 +19,6 @@ namespace Final_Project.Data
 
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Appointment> Appointment { get; set; }
-
         public DbSet<NewTask> NewTasks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
