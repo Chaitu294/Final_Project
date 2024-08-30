@@ -4,6 +4,7 @@ using Final_Project.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_Project.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240829045828_fetch task")]
+    partial class fetchtask
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -138,9 +141,9 @@ namespace Final_Project.Data.Migrations
                             AppTitle = "Title1",
                             Attendees = "Attendee1",
                             Description = "Description1",
-                            EndDateTime = new DateTime(2024, 8, 31, 10, 32, 7, 56, DateTimeKind.Local).AddTicks(9777),
+                            EndDateTime = new DateTime(2024, 8, 31, 10, 28, 27, 571, DateTimeKind.Local).AddTicks(8750),
                             Location = "Location1",
-                            StartDateTime = new DateTime(2024, 8, 29, 10, 32, 7, 56, DateTimeKind.Local).AddTicks(9764)
+                            StartDateTime = new DateTime(2024, 8, 29, 10, 28, 27, 571, DateTimeKind.Local).AddTicks(8739)
                         },
                         new
                         {
@@ -148,9 +151,9 @@ namespace Final_Project.Data.Migrations
                             AppTitle = "Title2",
                             Attendees = "Attendee2",
                             Description = "Description2",
-                            EndDateTime = new DateTime(2024, 9, 1, 10, 32, 7, 56, DateTimeKind.Local).AddTicks(9785),
+                            EndDateTime = new DateTime(2024, 9, 1, 10, 28, 27, 571, DateTimeKind.Local).AddTicks(8759),
                             Location = "Location2",
-                            StartDateTime = new DateTime(2024, 8, 29, 10, 32, 7, 56, DateTimeKind.Local).AddTicks(9784)
+                            StartDateTime = new DateTime(2024, 8, 29, 10, 28, 27, 571, DateTimeKind.Local).AddTicks(8758)
                         });
                 });
 
