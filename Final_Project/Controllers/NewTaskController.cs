@@ -92,11 +92,12 @@ namespace Final_Project.Controllers
                 
                 await _db.NewTasks.AddAsync(obj);
                 await _db.SaveChangesAsync();
-
+           
                 return RedirectToAction("Index");
             }
             ViewBag.Users = new SelectList(_userManager.Users, "FirstName", "UserName", obj.AssignedTo);
             ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "Title", obj.CustomerId);
+          
             return View(obj);
         }
 

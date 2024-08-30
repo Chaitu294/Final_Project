@@ -45,7 +45,7 @@ namespace Final_Assessment.Controllers
         public IActionResult Create()
         {
             ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "FirstName");
-            ViewBag.Tasks = new SelectList(_db.NewTasks, "TaskTitle", "TaskId");
+            ViewBag.Tasks = new SelectList(_db.NewTasks, "TaskId", "TaskTitle");
             return View();
         }
 
@@ -60,7 +60,7 @@ namespace Final_Assessment.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "FirstName", appointment.CustomerId);
-            ViewBag.Tasks = new SelectList(_db.NewTasks, "TaskTitle", "TaskId", appointment.TaskId);
+            ViewBag.Tasks = new SelectList(_db.NewTasks, "TaskId", "TaskTitle", appointment.TaskId);
             return View(appointment);
         }
 
@@ -73,7 +73,7 @@ namespace Final_Assessment.Controllers
                 return NotFound();
             }
             ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "FirstName", appointment.CustomerId);
-            ViewBag.Tasks = new SelectList(_db.NewTasks, "TaskTitle", "TaskId", appointment.TaskId);
+            ViewBag.Tasks = new SelectList(_db.NewTasks, "TaskId", "TaskTitle", appointment.TaskId);
             return View(appointment);
         }
 
@@ -88,7 +88,7 @@ namespace Final_Assessment.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "FirstName", appointment.CustomerId);
-            ViewBag.Tasks = new SelectList(_db.NewTasks, "TaskTitle", "TaskId", appointment.TaskId);
+            ViewBag.Tasks = new SelectList(_db.NewTasks, "TaskId", "TaskTitle", appointment.TaskId);
             return View(appointment);
         }
 
@@ -108,7 +108,7 @@ namespace Final_Assessment.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteConfirm(int id)
         {
-            var appointment = _db.Appointment.Find(id);
+            var appointment = await _db.Appointment.FindAsync(id);
             if (appointment != null)
             {
                 _db.Appointment.Remove(appointment);
