@@ -33,11 +33,34 @@
                                 <a class="nav-link px-0 text-white" asp-controller="Users" asp-action="Index">Manage Users</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-0 text-white" asp-controller="" asp-action="">Session Timeout</a>
+                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="HomeDashboard" asp-action="CreateNewLead">Customers List</a>
+                            </li>
+                            
+                        }
+                        @if (User.IsInRole("AccountManager"))
+                        {
+                            <li>
+                                <a class="nav-link px-0 text-white" asp-controller="NewTask" asp-action="Index">Task & Diary Management</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-0 text-white" asp-controller="" asp-action="">Audit Logs</a>
+                                <a class="nav-link px-0 text-white" asp-controller="Appointment" asp-action="Index">Appointment Management</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="HomeDashboard" asp-action="CreateNewLead">Create New Lead</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="Appointment" asp-action="Create">Create New Appointment</a>
+                            </li>
+                           @*  <li class="nav-item">
+                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="" asp-action="">Recently Viewed Customers</a>
+                            </li> *@
+                            <li class="nav-item">
+                                <a class="nav-link px-0 text-white" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">My Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-0 text-white" asp-controller="Users" asp-action="Index">Manage Users</a>
+                            </li>
+
                         }
                         @if (User.IsInRole("User"))
                         {
@@ -53,9 +76,9 @@
                             <li class="nav-item">
                                 <a class="nav-link px-0 text-white" asp-area="" asp-controller="Appointment" asp-action="Create">Create New Appointment</a>
                             </li>
-                            <li class="nav-item">
+                            @* <li class="nav-item">
                                 <a class="nav-link px-0 text-white" asp-area="" asp-controller="" asp-action="">Recently Viewed Customers</a>
-                            </li>
+                            </li> *@
                             <li class="nav-item">
                                 <a class="nav-link px-0 text-white" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">My Profile</a>
                             </li>
