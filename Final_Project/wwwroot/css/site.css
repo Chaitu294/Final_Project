@@ -20,3 +20,75 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/*MY STYLING*/
+
+.heading {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    font-weight: bold;
+    font-size: x-large;
+    margin-bottom: 10px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Centering content */
+.welcome-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.welcome-message {
+    background: #073642; 
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .welcome-message:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .welcome-message h1 {
+        font-size: 3.5em;
+        margin-bottom: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .welcome-message p {
+        font-size: 1.3em;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+.cta-button {
+    display: inline-block;
+    font-size: 1.2em;
+    color: #fff;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); 
+    padding: 15px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+    .cta-button:hover {
+        background: linear-gradient(135deg, #feb47b, #ff7e5f); 
+        transform: translateY(-3px);
+    }

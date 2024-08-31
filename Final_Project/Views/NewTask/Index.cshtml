@@ -2,8 +2,8 @@
 
 <h1>Task Management</h1>
 <div class="container">
-    <div class="row pt-4">
-        <div class="col-6">
+    <div class="row pt-3">
+        <div class="col-6 pb-4">
             <a class="btn btn-primary" asp-controller="NewTask" asp-action="Create">
                 Create New Task
             </a>
@@ -15,7 +15,7 @@
     </div>
 
     <!-- Filtering Form -->
-    <form method="get" class="mt-4">
+    <form method="get" class="mt-2">
         <div class="row">
             <div class="col-md-3">
                 <label for="priorityFilter">Priority</label>
@@ -62,6 +62,7 @@
                 <th>Status</th>
                 <th>Assigned To</th>
                 <th>Customer</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

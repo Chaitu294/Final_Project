@@ -15,7 +15,8 @@ namespace Final_Project.Models
         public int PhoneNumber { get; set; }
         public string Address { get; set; }
         public DateTime ViewedTime { get; set; }
+        public string ViewedBy { get; set; }
 
-        
+
     }
 }
