@@ -57,6 +57,23 @@ namespace Final_Assessment.Controllers
             {
                 return NotFound();
             }
+            RecentCustomer recentCustomer = new RecentCustomer()
+            {
+                CustomerId = customer.CustomerId,
+                Title  = customer.Title,
+                FirstName  = customer.FirstName,
+                MiddleName  = customer.MiddleName,
+                Surname  = customer.Surname,
+                PreferredName  = customer.PreferredName,
+                Email  = customer.Email,
+                PhoneNumber  = customer.PhoneNumber,
+                Address  = customer.Address,
+                ViewedTime  = DateTime.Now
+            };
+            _db.RecentCustomer.Add(recentCustomer);
+            _db.SaveChanges();
+
+
             return View(customer);
         }
         public IActionResult CustomerEdit(int id)
@@ -104,6 +121,28 @@ namespace Final_Assessment.Controllers
                 _db.SaveChanges();
             }
             return RedirectToAction("CustomerManagement");
+        }
+        public IActionResult RecentCustomer()
+        {
+            List<RecentCustomer> recentcustomerlist = _db.RecentCustomer.ToList();
+
+            return View(recentcustomerlist);
+        }
+        [HttpGet]
+        public async Task<IActionResult> RecentCustomer(string Customersearch)
+        {
+            ViewData["GetRecentCustomerDetails"] = Customersearch;
+            var recentcustomers = from x in _db.RecentCustomer
+                            select x;
+            if (!String.IsNullOrEmpty(Customersearch))
+            {
+                recentcustomers = recentcustomers.Where(x => x.Title.Contains(Customersearch)
+                                            || x.FirstName.Contains(Customersearch)
+                                            || x.MiddleName.Contains(Customersearch)
+                                            || x.Surname.Contains(Customersearch)
+                                            || x.PreferredName.Contains(Customersearch));
+            }
+            return View(await recentcustomers.AsNoTracking().ToListAsync());
         }
 
     }
