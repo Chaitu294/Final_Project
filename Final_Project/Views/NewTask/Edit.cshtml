@@ -1,13 +1,7 @@
 ﻿@model Final_Project.Models.NewTask
 @{
-    ViewBag.Title = "Create New Task";
+    ViewBag.Title = "Edit Task";
 }
-@{
-    var recurrencePatterns = new List<string> { "Daily", "Weekly", "Monthly", "Yearly" };
-}
-
-
-
 
 <div class="container mt-4">
     <div class="row">
@@ -18,19 +12,20 @@
                 </div>
                 <div class="card-body">
                     <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="TaskId" />
                         <div class="form-group mb-3">
                             <label asp-for="TaskTitle" class="form-label">Task Title</label>
-                            <input asp-for="TaskTitle" class="form-control" placeholder="Enter task title" />
+                            <input asp-for="TaskTitle" class="form-control" />
                             <span asp-validation-for="TaskTitle" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="ClientName"></label>
+                            <label asp-for="ClientName" class="form-label">Client Name</label>
                             <input asp-for="ClientName" class="form-control" />
                             <span asp-validation-for="ClientName" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-3">
                             <label asp-for="Description" class="form-label">Description</label>
-                            <textarea asp-for="Description" rows="5" class="form-control" placeholder="Enter task description"></textarea>
+                            <textarea asp-for="Description" rows="5" class="form-control"></textarea>
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-3">
@@ -58,7 +53,7 @@
                             </select>
                             <span asp-validation-for="Status" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label asp-for="AssignedTo" class="control-label"></label>
                             <select asp-for="AssignedTo" asp-items="ViewBag.Users" class="form-control"></select>
                             <span asp-validation-for="AssignedTo" class="text-danger"></span>
@@ -70,9 +65,8 @@
                             </select>
                             <span asp-validation-for="CustomerId" class="text-danger"></span>
                         </div>
-
                         <div class="d-flex justify-content-between">
-                            <button type="submit" class="btn btn-primary">Edit</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                             <a asp-controller="NewTask" asp-action="Index" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>
