@@ -2,26 +2,31 @@
 @{
     ViewData["Title"] = "CreateNewLead";
 }
+@if (User.IsInRole("Admin") || User.IsInRole("User")){
 <a class="btn btn-primary" asp-controller="HomeDashboard" asp-action="CustomerManagement">Customer List</a>
-<form class="form" asp-action="CreateNewLead" method="post" style="margin:5% auto;
-    width: 50%;
-    background-color: #002b36;
-    padding: 50px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.75)">
-    <span class="heading">Create New Lead</span>
-    <br />
-    <input type="text" placeholder="Title" class="form-control" asp-for="Title" /> <br />
-    <input type="text" placeholder="FirstName" class="form-control" asp-for="FirstName" /> <br />
-    <input type="text" placeholder="MiddelName" class="form-control" asp-for="MiddleName" /> <br />
-    <input type="text" placeholder="Surname" class="form-control" asp-for="Surname" /> <br />
-    <input type="text" placeholder="PreferredName" class="form-control" asp-for="PreferredName" /> <br />
-    <input type="text" placeholder="Email" class="form-control" asp-for="Email" /> <br />
-    <input type="number" placeholder="PhoneNumber" class="form-control" asp-for="PhoneNumber" /> <br />
-    <input type="text" placeholder="Address" rows="3" class="form-control" asp-for="Address" /> <br />
-    <br />
-    <button class="btn btn-success button-submit" type="submit"> Create </button>
-</form>
+}
+@if (User.IsInRole("User"))
+{
+    <form class="form" asp-action="CreateNewLead" method="post" style="margin:5% auto;
+        width: 50%;
+        background-color: #002b36;
+        padding: 50px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.75)">
+        <span class="heading">Create New Lead</span>
+        <br />
+        <input type="text" placeholder="Title" class="form-control" asp-for="Title" /> <br />
+        <input type="text" placeholder="FirstName" class="form-control" asp-for="FirstName" /> <br />
+        <input type="text" placeholder="MiddelName" class="form-control" asp-for="MiddleName" /> <br />
+        <input type="text" placeholder="Surname" class="form-control" asp-for="Surname" /> <br />
+        <input type="text" placeholder="PreferredName" class="form-control" asp-for="PreferredName" /> <br />
+        <input type="text" placeholder="Email" class="form-control" asp-for="Email" /> <br />
+        <input type="number" placeholder="PhoneNumber" class="form-control" asp-for="PhoneNumber" /> <br />
+        <input type="text" placeholder="Address" rows="3" class="form-control" asp-for="Address" /> <br />
+        <br />
+        <button class="btn btn-success button-submit" type="submit"> Create </button>
+    </form>
+}
