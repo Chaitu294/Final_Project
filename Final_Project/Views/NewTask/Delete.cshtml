@@ -28,8 +28,9 @@
                         <dt class="col-sm-3">Status</dt>
                         <dd class="col-sm-9">@Model.Status</dd>
                     </dl>
-                    <form asp-action="DeleteConfirm" method="post">                       
-                        <input type="hidden" asp-for="TaskId" />
+                    <form asp-action="DeleteConfirm" asp-route-id="@Model.TaskId" method="post">                       
+                        @* <input type="hidden" asp-for="@Model.TaskId" /> *@
+                        <input asp-for="@Model.TaskId" hidden />
                         <button type="submit" class="btn btn-danger">Delete</button>
                         <a asp-controller="NewTask" asp-action="Index" class="btn btn-secondary">Cancel</a>
                     </form>

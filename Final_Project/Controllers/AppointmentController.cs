@@ -16,10 +16,10 @@ namespace Final_Assessment.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var appointments = _db.Appointment.ToList();
-            var customers = _db.Customer.ToList();
+            var appointments = await _db.Appointment.ToListAsync();
+            var customers = await _db.Customer.ToListAsync();
 
             var appointmentWithCustomerData = appointments.Select(a => new
             {
@@ -45,54 +45,58 @@ namespace Final_Assessment.Controllers
         public IActionResult Create()
         {
             ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "FirstName");
+            ViewBag.Tasks = new SelectList(_db.NewTasks, "TaskId", "TaskTitle");
             return View();
         }
 
 
         [HttpPost]
-        public IActionResult Create(Appointment appointment)
+        public async Task<IActionResult> Create(Appointment appointment)
         {
             if (ModelState.IsValid)
             {
-                _db.Appointment.Add(appointment);
-                _db.SaveChanges();
+                await _db.Appointment.AddAsync(appointment);
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "FirstName", appointment.CustomerId);
+            ViewBag.Tasks = new SelectList(_db.NewTasks, "TaskId", "TaskTitle", appointment.TaskId);
             return View(appointment);
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var appointment = _db.Appointment.Find(id);
+            var appointment = await _db.Appointment.FindAsync(id);
             if (appointment == null)
             {
                 return NotFound();
             }
             ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "FirstName", appointment.CustomerId);
+            ViewBag.Tasks = new SelectList(_db.NewTasks, "TaskId", "TaskTitle", appointment.TaskId);
             return View(appointment);
         }
 
 
         [HttpPost]
-        public IActionResult Edit(Appointment appointment)
+        public async Task<IActionResult> Edit(Appointment appointment)
         {
             if (ModelState.IsValid)
             {
                 _db.Update(appointment);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "FirstName", appointment.CustomerId);
+            ViewBag.Tasks = new SelectList(_db.NewTasks, "TaskId", "TaskTitle", appointment.TaskId);
             return View(appointment);
         }
 
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var appointment = _db.Appointment.Find(id);
+            var appointment = await _db.Appointment.FindAsync(id);
             if (appointment == null)
             {
                 return NotFound();
@@ -102,13 +106,13 @@ namespace Final_Assessment.Controllers
 
 
         [HttpPost]
-        public IActionResult DeleteConfirm(int id)
+        public async Task<IActionResult> DeleteConfirm(int id)
         {
-            var appointment = _db.Appointment.Find(id);
+            var appointment = await _db.Appointment.FindAsync(id);
             if (appointment != null)
             {
                 _db.Appointment.Remove(appointment);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
             }
             return RedirectToAction("Index");
         }
