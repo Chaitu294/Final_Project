@@ -4,6 +4,7 @@ using Final_Project.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_Project.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240829050207_fetch taskhome")]
+    partial class fetchtaskhome
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -113,9 +116,6 @@ namespace Final_Project.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -130,9 +130,6 @@ namespace Final_Project.Data.Migrations
                     b.Property<DateTime>("StartDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TaskId")
-                        .HasColumnType("int");
-
                     b.HasKey("AppId");
 
                     b.ToTable("Appointment");
@@ -143,24 +140,20 @@ namespace Final_Project.Data.Migrations
                             AppId = 1,
                             AppTitle = "Title1",
                             Attendees = "Attendee1",
-                            CustomerId = 0,
                             Description = "Description1",
-                            EndDateTime = new DateTime(2024, 9, 1, 11, 8, 50, 590, DateTimeKind.Local).AddTicks(4874),
+                            EndDateTime = new DateTime(2024, 8, 31, 10, 32, 7, 56, DateTimeKind.Local).AddTicks(9777),
                             Location = "Location1",
-                            StartDateTime = new DateTime(2024, 8, 30, 11, 8, 50, 590, DateTimeKind.Local).AddTicks(4863),
-                            TaskId = 0
+                            StartDateTime = new DateTime(2024, 8, 29, 10, 32, 7, 56, DateTimeKind.Local).AddTicks(9764)
                         },
                         new
                         {
                             AppId = 2,
                             AppTitle = "Title2",
                             Attendees = "Attendee2",
-                            CustomerId = 0,
                             Description = "Description2",
-                            EndDateTime = new DateTime(2024, 9, 2, 11, 8, 50, 590, DateTimeKind.Local).AddTicks(4882),
+                            EndDateTime = new DateTime(2024, 9, 1, 10, 32, 7, 56, DateTimeKind.Local).AddTicks(9785),
                             Location = "Location2",
-                            StartDateTime = new DateTime(2024, 8, 30, 11, 8, 50, 590, DateTimeKind.Local).AddTicks(4882),
-                            TaskId = 0
+                            StartDateTime = new DateTime(2024, 8, 29, 10, 32, 7, 56, DateTimeKind.Local).AddTicks(9784)
                         });
                 });
 
@@ -250,9 +243,6 @@ namespace Final_Project.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -273,56 +263,6 @@ namespace Final_Project.Data.Migrations
                     b.HasKey("TaskId");
 
                     b.ToTable("NewTasks");
-                });
-
-            modelBuilder.Entity("Final_Project.Models.RecentCustomer", b =>
-                {
-                    b.Property<int>("RecentCustomerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecentCustomerId"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MiddleName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PreferredName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ViewedTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("RecentCustomerId");
-
-                    b.ToTable("RecentCustomer");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

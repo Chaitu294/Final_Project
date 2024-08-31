@@ -19,7 +19,7 @@ namespace Final_Project.Controllers
             _db = db;
             _userManager = userManager;
         }
-        public IActionResult Index(string sortOrder, string priorityFilter, string statusFilter, DateTime? startDate, DateTime? endDate)
+        public async Task<IActionResult> Index(string sortOrder, string priorityFilter, string statusFilter, DateTime? startDate, DateTime? endDate)
         {
 
             ViewBag.DueDateSortParam = string.IsNullOrEmpty(sortOrder) ? "dueDate_desc" : "";
@@ -73,34 +73,38 @@ namespace Final_Project.Controllers
                     break;
             }
 
-            return View(tasks.ToList());
+            return View(await tasks.ToListAsync());
         }
 
         public IActionResult Create()
         {
+            
             ViewBag.Users = new SelectList(_userManager.Users, "FirstName", "UserName");
             ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "Title");
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(NewTask obj)
+        public async Task<IActionResult> Create(NewTask obj)
         {
             if (ModelState.IsValid)
             {
-                _db.NewTasks.Add(obj);
-                _db.SaveChanges();
+                
+                await _db.NewTasks.AddAsync(obj);
+                await _db.SaveChangesAsync();
+           
                 return RedirectToAction("Index");
             }
             ViewBag.Users = new SelectList(_userManager.Users, "FirstName", "UserName", obj.AssignedTo);
             ViewBag.Customers = new SelectList(_db.Customer, "CustomerId", "Title", obj.CustomerId);
+          
             return View(obj);
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var task = _db.NewTasks.Find(id);
+            var task = await _db.NewTasks.FindAsync(id);
             if (task == null)
             {
                 return NotFound();
@@ -111,12 +115,12 @@ namespace Final_Project.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(NewTask task)
+        public async Task<IActionResult> Edit(NewTask task)
         {
             if (ModelState.IsValid)
             {
                 _db.Update(task);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             ViewBag.Users = new SelectList(_userManager.Users, "FirstName", "UserName",task.AssignedTo);
@@ -124,9 +128,9 @@ namespace Final_Project.Controllers
             return View(task);
         }
         [HttpGet]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var task = _db.NewTasks.Find(id);
+            var task = await _db.NewTasks.FindAsync(id);
             if (task == null)
             {
                 return NotFound();
@@ -135,14 +139,16 @@ namespace Final_Project.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteConfirm(int id)
+        public async Task<IActionResult> DeleteConfirm(int id)
         {
-            var task = _db.NewTasks.Find(id);
+            var task = await _db.NewTasks.FindAsync(id);
+
             if (task != null)
             {
                 _db.NewTasks.Remove(task);
-                _db.SaveChanges();
-            }
+                await _db.SaveChangesAsync();
+
+            }            
             return RedirectToAction("Index");
         }
     }

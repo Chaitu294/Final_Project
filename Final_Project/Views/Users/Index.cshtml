@@ -3,8 +3,9 @@
     ViewData["Title"] = "Users";
 }
 <h1>Users</h1>
-
-<a asp-action="Add" class="btn btn-primary">Add New</a>
+<li class="btn btn-primary">
+    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Add New User</a>
+</li>
 
 <table class="table table-striped mt-4">
     <thead>
