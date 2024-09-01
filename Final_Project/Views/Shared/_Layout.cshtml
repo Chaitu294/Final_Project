@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Final_Project</title>
+    <title>@ViewData["Title"] - Client Sphere </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FinalProject.styles.css" asp-append-version="true" />
@@ -15,7 +15,7 @@
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-3 text-white min-vh-100">
                     <a asp-controller="Home" asp-action="Index" class="navbar-brand d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline fw-bolder">
-                            Final Project
+                            Client Sphere
                         </span>
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
@@ -27,7 +27,7 @@
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link px-0 text-white" asp-controller="Roles" asp-action="Index">Manage Roles</a>
+                                <a class="nav-link px-0 text-white" asp-controller="Roles" asp-action="Index">Roles</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link px-0 text-white" asp-controller="Users" asp-action="Index">Manage Users</a>
@@ -43,14 +43,15 @@
                                 <a class="nav-link px-0 text-white" asp-controller="NewTask" asp-action="Index">Task & Diary Management</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="Appointment" asp-action="Create">Create New Appointment</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link px-0 text-white" asp-controller="Appointment" asp-action="Index">Appointment Management</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link px-0 text-white" asp-area="" asp-controller="HomeDashboard" asp-action="CreateNewLead">View Customer</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="Appointment" asp-action="Create">Create New Appointment</a>
-                            </li>
+                           
                            @*  <li class="nav-item">
                                 <a class="nav-link px-0 text-white" asp-area="" asp-controller="" asp-action="">Recently Viewed Customers</a>
                             </li> *@
@@ -68,13 +69,13 @@
                                 <a class="nav-link px-0 text-white" asp-controller="NewTask" asp-action="Index">Task & Diary Management</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="Appointment" asp-action="Create">Create New Appointment</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link px-0 text-white" asp-controller="Appointment" asp-action="Index">Appointment Management</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link px-0 text-white" asp-area="" asp-controller="HomeDashboard" asp-action="CreateNewLead">Create New Lead</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="Appointment" asp-action="Create">Create New Appointment</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link px-0 text-white" asp-controller="HomeDashboard" asp-action="RecentCustomer">Recently Viewed Customers</a>
