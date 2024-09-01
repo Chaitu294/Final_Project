@@ -35,6 +35,9 @@
                             <li class="nav-item">
                                 <a class="nav-link px-0 text-white" asp-area="" asp-controller="HomeDashboard" asp-action="CreateNewLead">Admin Panel</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-0 text-white" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">My Profile</a>
+                            </li>
                             
                         }
                         @if (User.IsInRole("AccountManager"))
@@ -48,10 +51,10 @@
                             <li class="nav-item">
                                 <a class="nav-link px-0 text-white" asp-controller="Appointment" asp-action="Index">Appointment Management</a>
                             </li>                            
-                            <li class="nav-item">
+                           @*  <li class="nav-item">
                                 <a class="nav-link px-0 text-white" asp-area="" asp-controller="HomeDashboard" asp-action="CreateNewLead">View Customer</a>
                             </li>
-                           
+                            *@
                            @*  <li class="nav-item">
                                 <a class="nav-link px-0 text-white" asp-area="" asp-controller="" asp-action="">Recently Viewed Customers</a>
                             </li> *@
