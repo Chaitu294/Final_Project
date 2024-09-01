@@ -2,9 +2,9 @@
 @{
     ViewData["Title"] = "CreateNewLead";
 }
-@if (User.IsInRole("Admin") || User.IsInRole("User")){
+
 <a class="btn btn-outline-primary" asp-controller="HomeDashboard" asp-action="CustomerManagement">Customer List</a>
-}      
+  
 @if (User.IsInRole("User"))
 {
     <form class="form" asp-action="CreateNewLead" method="post">

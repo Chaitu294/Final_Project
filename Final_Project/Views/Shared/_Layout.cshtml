@@ -33,7 +33,7 @@
                                 <a class="nav-link px-0 text-white" asp-controller="Users" asp-action="Index">Manage Users</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="HomeDashboard" asp-action="CreateNewLead">Customers List</a>
+                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="HomeDashboard" asp-action="CreateNewLead">Admin Panel</a>
                             </li>
                             
                         }
@@ -46,7 +46,7 @@
                                 <a class="nav-link px-0 text-white" asp-controller="Appointment" asp-action="Index">Appointment Management</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="HomeDashboard" asp-action="CreateNewLead">Create New Lead</a>
+                                <a class="nav-link px-0 text-white" asp-area="" asp-controller="HomeDashboard" asp-action="CreateNewLead">View Customer</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link px-0 text-white" asp-area="" asp-controller="Appointment" asp-action="Create">Create New Appointment</a>
@@ -55,10 +55,10 @@
                                 <a class="nav-link px-0 text-white" asp-area="" asp-controller="" asp-action="">Recently Viewed Customers</a>
                             </li> *@
                             <li class="nav-item">
-                                <a class="nav-link px-0 text-white" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">My Profile</a>
+                                <a class="nav-link px-0 text-white" asp-controller="Users" asp-action="Index">Manage Users</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-0 text-white" asp-controller="Users" asp-action="Index">Manage Users</a>
+                                <a class="nav-link px-0 text-white" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">My Profile</a>
                             </li>
 
                         }
