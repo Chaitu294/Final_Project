@@ -52,10 +52,13 @@
     </div>
     <br />
     <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" style="margin-bottom:15px; width:15%" />
+        <div class="d-flex align-items-center">
+            <input type="submit" value="Create" class="btn btn-primary" style="margin-right:10px; width:15%;" />
+            <a asp-action="Index" class="btn btn-secondary" style="width:15%;">Back to List</a>
+        </div>
     </div>
 </form>
 
-<div>
+@* <div>
     <a asp-action="Index" class="btn btn-secondary" style="margin-left:3px">Back to List</a>
-</div>
+</div> *@
