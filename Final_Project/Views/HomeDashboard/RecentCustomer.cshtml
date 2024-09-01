@@ -1,6 +1,6 @@
 ﻿@model List<RecentCustomer>
 @{
-    ViewData["Title"] = "CustomerManagement";
+    ViewData["Title"] = "Recently Viewed Customer List";
 }
 
 <h3 class="heading">Recently Viewed Customers</h3>
@@ -8,12 +8,12 @@
 <form method="get" asp-action="RecentCustomer">
     <p>
         <input type="search" placeholder="Search" value="@ViewData["GetRecentCustomerDetails"]" name="Customersearch" />
-        <input type="submit" value="Search" class="btn btn-primary" />
+        <input type="submit" value="Search" class="btn btn-primary" /> | 
         <a asp-action="RecentCustomer"> Get All Recently Viewed Customers</a>
     </p>
 </form>
 
-<div class="row row-cols-1 row-cols-md-4 ">
+@* <div class="row row-cols-1 row-cols-md-4 ">
     @foreach (var RecentCustomer in Model)
     {
         <div class="col">
@@ -27,10 +27,39 @@
                 </div>
                 <div class="card-footer text-center">
                     <p> Viewed at : @RecentCustomer.ViewedTime </p>
-                    <p> Viewed by : @User.Identity?.Name</p>
+                    <p> Viewed by : @RecentCustomer.ViewedBy</p>
 
                 </div>
             </div>
         </div>
     }
-</div>
+</div> *@
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>S.No</th>
+            <th>Customer Name</th>
+            <th>Viewed Time</th>
+            <th>Viewed By</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int serial = 0;
+        }
+        @foreach (var RecentCustomer in Model)
+        {
+            <tr>
+                @{
+                    serial = serial + 1;
+                }
+                <td>@serial </td>
+                <td>@RecentCustomer.PreferredName</td>
+                <td>@RecentCustomer.ViewedTime</td>
+                <td>@RecentCustomer.ViewedBy</td>                
+            </tr>
+        }
+    </tbody>
+</table>

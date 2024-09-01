@@ -68,7 +68,8 @@ namespace Final_Assessment.Controllers
                 Email  = customer.Email,
                 PhoneNumber  = customer.PhoneNumber,
                 Address  = customer.Address,
-                ViewedTime  = DateTime.Now
+                ViewedTime  = DateTime.Now,
+                ViewedBy = @User.Identity?.Name
             };
             _db.RecentCustomer.Add(recentCustomer);
             _db.SaveChanges();
@@ -125,22 +126,24 @@ namespace Final_Assessment.Controllers
         public IActionResult RecentCustomer()
         {
             List<RecentCustomer> recentcustomerlist = _db.RecentCustomer.ToList();
-
             return View(recentcustomerlist);
         }
+
         [HttpGet]
         public async Task<IActionResult> RecentCustomer(string Customersearch)
         {
             ViewData["GetRecentCustomerDetails"] = Customersearch;
             var recentcustomers = from x in _db.RecentCustomer
                             select x;
+
             if (!String.IsNullOrEmpty(Customersearch))
             {
                 recentcustomers = recentcustomers.Where(x => x.Title.Contains(Customersearch)
                                             || x.FirstName.Contains(Customersearch)
                                             || x.MiddleName.Contains(Customersearch)
                                             || x.Surname.Contains(Customersearch)
-                                            || x.PreferredName.Contains(Customersearch));
+                                            || x.PreferredName.Contains(Customersearch)
+                                            || x.ViewedBy.Contains(Customersearch));
             }
             return View(await recentcustomers.AsNoTracking().ToListAsync());
         }

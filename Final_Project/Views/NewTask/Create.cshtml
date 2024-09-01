@@ -7,19 +7,19 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header text-white" style="background:#008776">
                     <h2>Create New Task</h2>
                 </div>
                 <div class="card-body">
-                    <form asp-action="Create" method="post">
+                    <form asp-action="Create" method="post" style="color:#2aa198">
                         <div class="form-group mb-3">
                             <label asp-for="TaskTitle" class="form-label">Task Title</label>
                             <input asp-for="TaskTitle" class="form-control" placeholder="Enter task title" />
                             <span asp-validation-for="TaskTitle" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label asp-for="ClientName"></label>
-                            <input asp-for="ClientName" class="form-control" />
+                            <input asp-for="ClientName" class="form-control" placeholder="ClientName" />
                             <span asp-validation-for="ClientName" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-3">
@@ -52,7 +52,7 @@
                             </select>
                             <span asp-validation-for="Status" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label asp-for="AssignedTo" class="control-label"></label>
                             <select asp-for="AssignedTo" asp-items="ViewBag.Users" class="form-control"></select>
                             <span asp-validation-for="AssignedTo" class="text-danger"></span>
@@ -64,8 +64,9 @@
                             </select>
                             <span asp-validation-for="CustomerId" class="text-danger"></span>
                         </div>
+                        <br />
                         <div class="d-flex justify-content-between">
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="submit" class="btn btn-success">Create</button>
                             <a asp-controller="NewTask" asp-action="Index" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>

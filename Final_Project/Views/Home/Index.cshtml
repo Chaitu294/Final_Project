@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@{
     ViewData["Title"] = "HomePage";
 }
 
@@ -6,3 +8,18 @@
     <h1 class="display-4">Welcome</h1>
     
 </div>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <h2> Hello @User.Identity?.Name! You are Logged in </h2>
+}
+else
+{  
+    <div class="welcome-container">
+        <div class="welcome-message">
+            <h1>Welcome to Our Website!</h1>
+            <h2>Customer Relationship Management.</h2><p>We're excited to have you here.</p>
+            <a asp-area="Identity" asp-page="/Account/Login" class="cta-button">Get Started</a>
+        </div>
+    </div>
+}

@@ -4,6 +4,7 @@ using Final_Project.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_Project.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240830083755_search")]
+    partial class search
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -130,9 +133,6 @@ namespace Final_Project.Data.Migrations
                     b.Property<DateTime>("StartDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TaskId")
-                        .HasColumnType("int");
-
                     b.HasKey("AppId");
 
                     b.ToTable("Appointment");
@@ -145,10 +145,9 @@ namespace Final_Project.Data.Migrations
                             Attendees = "Attendee1",
                             CustomerId = 0,
                             Description = "Description1",
-                            EndDateTime = new DateTime(2024, 9, 2, 10, 53, 40, 964, DateTimeKind.Local).AddTicks(2991),
+                            EndDateTime = new DateTime(2024, 9, 1, 14, 7, 54, 320, DateTimeKind.Local).AddTicks(1570),
                             Location = "Location1",
-                            StartDateTime = new DateTime(2024, 8, 31, 10, 53, 40, 964, DateTimeKind.Local).AddTicks(2974),
-                            TaskId = 0
+                            StartDateTime = new DateTime(2024, 8, 30, 14, 7, 54, 320, DateTimeKind.Local).AddTicks(1559)
                         },
                         new
                         {
@@ -157,10 +156,9 @@ namespace Final_Project.Data.Migrations
                             Attendees = "Attendee2",
                             CustomerId = 0,
                             Description = "Description2",
-                            EndDateTime = new DateTime(2024, 9, 3, 10, 53, 40, 964, DateTimeKind.Local).AddTicks(3000),
+                            EndDateTime = new DateTime(2024, 9, 2, 14, 7, 54, 320, DateTimeKind.Local).AddTicks(1578),
                             Location = "Location2",
-                            StartDateTime = new DateTime(2024, 8, 31, 10, 53, 40, 964, DateTimeKind.Local).AddTicks(2999),
-                            TaskId = 0
+                            StartDateTime = new DateTime(2024, 8, 30, 14, 7, 54, 320, DateTimeKind.Local).AddTicks(1578)
                         });
                 });
 
@@ -273,60 +271,6 @@ namespace Final_Project.Data.Migrations
                     b.HasKey("TaskId");
 
                     b.ToTable("NewTasks");
-                });
-
-            modelBuilder.Entity("Final_Project.Models.RecentCustomer", b =>
-                {
-                    b.Property<int>("RecentCustomerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecentCustomerId"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MiddleName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PreferredName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ViewedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ViewedTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("RecentCustomerId");
-
-                    b.ToTable("RecentCustomer");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

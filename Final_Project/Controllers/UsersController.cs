@@ -8,7 +8,7 @@ using System.Net.Mail;
 
 namespace Final_Project.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,AccountManager")]
     public class UsersController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
