@@ -91,8 +91,10 @@
                     <td>@task.AssignedTo</td>
                     <td>@task.CustomerId</td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@task.TaskId" class="btn btn-warning">Edit</a> |
-                        <a asp-action="Delete" asp-route-id="@task.TaskId" class="btn btn-danger">Delete</a>
+                        <div class="d-flex align-items-center">
+                            <a asp-action="Edit" asp-route-id="@task.TaskId" class="btn btn-warning me-2">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@task.TaskId" class="btn btn-danger">Delete</a>
+                        </div>
                     </td>
                 </tr>
             }
