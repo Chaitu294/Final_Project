@@ -45,12 +45,9 @@
         <label asp-for="Address" class="control-label"></label>
         <input asp-for="Address" class="form-control" />
     </div>
-    
+    <br/>
     <div class="form-group">
         <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="CustomerManagement" class="btn btn-secondary ms-2">Back to List</a>
     </div>
 </form>
-
-<div>
-    <a asp-action="CustomerManagement">Back to List</a>
-</div>

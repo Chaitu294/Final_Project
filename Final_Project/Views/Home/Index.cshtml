@@ -4,13 +4,6 @@
     ViewData["Title"] = "HomePage";
 }
 
-<div class="text-center">
-    @* <h1 class="display-4">Welcome</h1>  *@
-  @*   @if (User.IsInRole("Admin"))
-    {
-        
-    } *@
-</div>
 
 @if (SignInManager.IsSignedIn(User))
 {
@@ -21,7 +14,7 @@ else
     <div class="welcome-container">
         <div class="welcome-message">
             <h1>Welcome to Our Website!</h1>
-            <h2>Customer Relationship Management.</h2><p>We're excited to have you here.</p>
+            <h2>CLIENT SPHERE!</h2><p>We're excited to have you here.</p>
             <a asp-area="Identity" asp-page="/Account/Login" class="cta-button">Get Started</a>
         </div>
     </div>

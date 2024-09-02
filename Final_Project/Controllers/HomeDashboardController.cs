@@ -17,13 +17,13 @@ namespace Final_Assessment.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult CreateNewLead(Customer customer)
+        public async Task<IActionResult>CreateNewLead(Customer customer)
         {
             if (ModelState.IsValid)
             {
-                _db.Customer.Add(customer);
-                _db.SaveChanges();
-                return RedirectToAction();
+                await _db.Customer.AddAsync(customer);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("CustomerManagement");
             }
             return View(customer);
         }
@@ -95,7 +95,7 @@ namespace Final_Assessment.Controllers
             {
                 _db.Update(customer);
                 _db.SaveChanges();
-                return RedirectToAction();
+                return RedirectToAction("CustomerManagement");
             }
             return View(customer);
         }
