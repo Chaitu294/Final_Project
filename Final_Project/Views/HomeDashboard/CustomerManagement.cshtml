@@ -13,11 +13,33 @@
     </p>
 </form>
 
-<div class="row row-cols-1 row-cols-md-4 ">
+ <div class="row row-cols-1 row-cols-md-4 g-4">
     @foreach (var Customer in Model)
     {
         <div class="col">
             <div class="card m-3" style="min-width:18rem; max-width:30%;">
+                <div class="card-header">
+                    <h3 class="text-white"> @Customer.Title</h3>
+                    <p> @Customer.PreferredName</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> @Customer.FirstName @Customer.Surname </p>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="CustomerView" asp-route-id="@Customer.CustomerId" class="btn btn-secondary">View</a>
+                    <a asp-action="CustomerEdit" asp-route-id="@Customer.CustomerId" class="btn btn-primary">Edit</a>
+                    <a asp-action="CustomerRemove" asp-route-id="@Customer.CustomerId" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div> 
+
+@* <div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (var Customer in Model)
+    {
+        <div class="col">
+            <div class="card m-3" style="min-width:18rem; max-width:100%;">
                 <div class="card-header">
                     <h3 class="text-white"> @Customer.Title</h3>
                     <p> @Customer.PreferredName</p>
@@ -33,4 +55,4 @@
             </div>
         </div>
     }
-</div>
+</div> *@

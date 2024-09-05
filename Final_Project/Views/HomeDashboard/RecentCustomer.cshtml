@@ -9,32 +9,9 @@
     <p>
         <input type="search" placeholder="Search" value="@ViewData["GetRecentCustomerDetails"]" name="Customersearch" />
         <input type="submit" value="Search" class="btn btn-primary" /> | 
-        <a asp-action="RecentCustomer"> Get All Recently Viewed Customers</a>
+        <a asp-action="RecentCustomer" class="btn btn-secondary"> Get All Recently Viewed Customers</a>
     </p>
 </form>
-
-@* <div class="row row-cols-1 row-cols-md-4 ">
-    @foreach (var RecentCustomer in Model)
-    {
-        <div class="col">
-            <div class="card m-3" style="min-width:18rem; max-width:30%;">
-                <div class="card-header">
-                    <h3> @RecentCustomer.Title</h3>
-                    <p> @RecentCustomer.PreferredName</p>
-                </div>
-                <div class="card-body text-center">
-                    <p> @RecentCustomer.FirstName @RecentCustomer.MiddleName @RecentCustomer.Surname </p>
-                </div>
-                <div class="card-footer text-center">
-                    <p> Viewed at : @RecentCustomer.ViewedTime </p>
-                    <p> Viewed by : @RecentCustomer.ViewedBy</p>
-
-                </div>
-            </div>
-        </div>
-    }
-</div> *@
-
 
 <table class="table table-striped">
     <thead>
